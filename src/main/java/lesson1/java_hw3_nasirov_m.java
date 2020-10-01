@@ -1,4 +1,4 @@
-/*package lesson1;
+package lesson1;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -47,13 +47,19 @@ public class java_hw3_nasirov_m {
     String answer = words[x].toLowerCase();
     int length = words[x].length();
     String[] wall = new String[length];
-        for(int i = 0;i<wall.length;i++){
+        for(
+    int i = 0;
+    i<wall.length;i++)
+
+    {
         wall[i] = "#";
     }
 
     String myAnswer;
         System.out.println("Угадайте слово");
-        do {
+        do
+
+    {
         myAnswer = sc.nextLine().toLowerCase();
         for (int i = 0; i < words[x].length() && i < myAnswer.length(); i++) {
             char a = answer.charAt(i);
@@ -69,22 +75,12 @@ public class java_hw3_nasirov_m {
 }
 
     public static void arr(String[] array) {
-        int tailSize=15-array.length;
-        String[] tail=new String[tailSize];
-        if(array.length<15) {
-            for(int i=0;i<(tailSize);i++) {
-                tail[i] = "#";
-            }
+        String tail = "##########";
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i]);
         }
-        for(int i=0;i<tail.length;i++){
-            System.out.print(tail[i]);
-        }
+        System.out.print(tail);
         System.out.println();
     }
 }
 
-
-
- */
