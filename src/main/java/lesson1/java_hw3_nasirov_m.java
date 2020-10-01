@@ -47,19 +47,13 @@ public class java_hw3_nasirov_m {
     String answer = words[x].toLowerCase();
     int length = words[x].length();
     String[] wall = new String[length];
-        for(
-    int i = 0;
-    i<wall.length;i++)
-
-    {
+        for(int i = 0;i<wall.length;i++){
         wall[i] = "#";
     }
 
     String myAnswer;
         System.out.println("Угадайте слово");
-        do
-
-    {
+        do {
         myAnswer = sc.nextLine().toLowerCase();
         for (int i = 0; i < words[x].length() && i < myAnswer.length(); i++) {
             char a = answer.charAt(i);
