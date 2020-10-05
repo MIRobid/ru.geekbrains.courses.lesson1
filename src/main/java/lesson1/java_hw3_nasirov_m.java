@@ -69,11 +69,18 @@ public class java_hw3_nasirov_m {
 }
 
     public static void arr(String[] array) {
-        String tail = "##########";
+        int tailSize=15-array.length;
+        String[] tail=new String[tailSize];
+        if(array.length<15) {
+            for(int i=0;i<(tailSize);i++) {
+                tail[i] = "#";
+            }
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i]);
         }
-        System.out.print(tail);
+        for(int i=0;i<tail.length;i++){
+            System.out.print(tail[i]);
+        }
         System.out.println();
     }
 }
