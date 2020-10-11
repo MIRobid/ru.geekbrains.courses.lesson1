@@ -9,7 +9,7 @@ public class hw6_nasirov_m {
         dog.run(200);
         dog.swim(200);
 
-        System.out.println("Создали животных: "+(cat.getCount()+dog.getCount()));
+        System.out.println("Создали животных: "+cat.getCount()+", Котов: "+cat.getCountCat()+", Собак: "+dog.getCountDog());
     }
 }
 
@@ -21,17 +21,26 @@ public abstract class Animal {
     int distance;
     int limitRun;
     int limitSwim;
-    public int count;
+    public static int countCat;
+    public static int countDog;
 
     public abstract void run(int distance);
 
     public abstract void swim(int distance);
 
     public int getCount(){
-        return count;
+        return countCat+countDog;
     }
-}
 
+    public int getCountCat(){
+        return countCat;
+    }
+
+    public int getCountDog(){
+        return countDog;
+    }
+
+}
 
 package lesson1;
 
@@ -41,7 +50,7 @@ public class Dog extends Animal {
         this.name=name;
         this.limitRun=limitRun;
         this.limitSwim=limitSwim;
-        count++;
+        countDog++;
     }
 
     @Override
@@ -61,7 +70,6 @@ public class Dog extends Animal {
             System.out.println(name+" проплыл только "+limitSwim+" м из "+distance+" м");
         }
     }
-
 
 }
 
@@ -73,7 +81,7 @@ public class Cat extends Animal {
         this.name=name;
         this.limitRun=limitRun;
         this.limitSwim=limitSwim;
-        count++;
+        countCat++;
     }
 
     @Override
@@ -95,4 +103,5 @@ public class Cat extends Animal {
     }
 
 }
+
  */
