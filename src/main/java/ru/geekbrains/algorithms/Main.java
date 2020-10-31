@@ -2,6 +2,9 @@ package ru.geekbrains.algorithms;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Iterator;
 
 public class Main {
 
@@ -13,132 +16,64 @@ public class Main {
         int key=rand.nextInt(4);
 
         startTime=(int) System.nanoTime();
-        int[] arr=new int[400];
-        arrNumbers(arr,400);
+        String[] arr=new String[4];
+        arr[0]="Zero";
+        arr[1]="One";
+        arr[2]="Two";
+        arr[3]="Three";
         finishTime=(int) System.nanoTime();
 
         System.out.println(Arrays.toString(arr));
         System.out.println(finishTime-startTime);
 
-        //Линейный поиск
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]==key){
-                System.out.println("Key is "+key+" at index: "+i);
-                break;
-            }
-        }
-
-        //Двоичный поиск
         startTime=(int) System.nanoTime();
-        Arrays.sort(arr);
-        System.out.println(Arrays.toString(arr));
-        System.out.println("Key: "+key);
-        System.out.println(binarySearch(arr,key));
+        ArrayList<String> mArray=new ArrayList<>();
+        mArray.add("Zero");
+        mArray.add("One");
+        mArray.add("Two");
+        mArray.add("Three");
+        finishTime=(int) System.nanoTime();
+
+        System.out.println(mArray);
+        System.out.println(finishTime-startTime);
+
+        //добавление
+        startTime=(int) System.nanoTime();
+        mArray.add(2,"Element");
+        System.out.println(mArray);
+
+        //удаление
+        mArray.remove(2);
+        System.out.println(mArray);
+
+        //получение элемента из списка
+        System.out.println(mArray.get(2));
         finishTime=(int) System.nanoTime();
         System.out.println(finishTime-startTime);
 
-        //Массив из 400 элементов
-        int[] bigArr=new int[400];
-        arrNumbers(bigArr,400);
-        System.out.println(Arrays.toString(bigArr));
+        //простой список
+        LinkedList<String> listL=new LinkedList<>();
+        listL.add("Zero");
+        listL.add("One");
+        listL.add("Two");
+        listL.add("Three");
+        System.out.println(listL);
+        listL.add(1,"Element");
+        listL.remove(1);
+        System.out.println(listL.get(1));
+
+        //итератор
         startTime=(int) System.nanoTime();
-        Arrays.sort(bigArr);
-        System.out.println(Arrays.toString(bigArr));
+        Iterator<String> iter=mArray.iterator();
+        while(iter.hasNext()){
+            System.out.println(iter.next());
+            iter.remove();
+        }
+        System.out.println(mArray);
         finishTime=(int) System.nanoTime();
         System.out.println(finishTime-startTime);
 
-        Сортировка Пузырьком
-        int buff;
-        boolean sorted=false;
-        startTime=(int) System.nanoTime();
-        while (!sorted) {
-            sorted=true;
-            for(int i=0;i<arr.length-1;i++){
-                if(arr[i]>arr[i+1]){
-                    sorted=false;
-                    buff=arr[i];
-                    arr[i]=arr[i+1];
-                    arr[i+1]=buff;
-                }
-            }
-        }
-        bubbleSort(bigArr,400);
-        finishTime=(int) System.nanoTime();
-        System.out.println(Arrays.toString(bigArr));
-        System.out.println(finishTime-startTime);
-
-        //Сортировка методом выбора
-        startTime=(int) System.nanoTime();
-        for(int i=0;i<bigArr.length-1;i++){
-            int min=i;
-            for (int j=i+1;j<bigArr.length;j++){
-                if(bigArr[j]<bigArr[min]){
-                    min = j;
-                }
-            }
-            swapM(bigArr,i,min);
-        }
-        finishTime=(int) System.nanoTime();
-        System.out.println(finishTime-startTime);
-
-        //Сортировка методом вставки
-        startTime=(int) System.nanoTime();
-        int in;
-        for(int i=1;i<bigArr.length;i++){
-            buff=bigArr[i];
-            in=i;
-            while(in>0 && bigArr[in-1]>=buff){
-                bigArr[in]=bigArr[in-1];
-                --in;
-            }
-            bigArr[in]=buff;
-        }
-        finishTime=(int) System.nanoTime();
-        System.out.println(finishTime-startTime);
     }
 
 
-
-    public static void arrNumbers(int[] arr, int numbers){
-        Random rand=new Random();
-        for(int i=0;i<arr.length;i++){
-            arr[i]=rand.nextInt(numbers);
-        }
-    }
-
-    public static int binarySearch(int arr[],int key){
-        int firstIndex=0;
-        int lastIndex=arr.length-1;
-        
-        while(firstIndex<=lastIndex){
-            int middleIndex=(firstIndex+lastIndex)/2;
-
-            if(arr[middleIndex]==key){
-                System.out.print("Index at ");
-                return middleIndex;
-            }
-            else if (arr[middleIndex]<key){
-                firstIndex=middleIndex+1;
-            }
-            else {
-                firstIndex=middleIndex-1;
-            }
-        }
-        return -1;
-    }
-
-    public static void swapM(int[] arr, int first, int last){
-        int buff = arr[first];
-        arr[first]=arr[last];
-        arr[last]=buff;
-    }
-
-    public static void bubbleSort(int[] arr,int elements){
-        for(int i=elements-1;i>=1;i--){
-            for(int j=0;j<i;j++){
-                if(arr[j]>arr[j+1])
-                    swapM(arr,j,j+1);
-            }
-        }
-    }
 }
