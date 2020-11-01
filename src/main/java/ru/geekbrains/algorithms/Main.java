@@ -97,10 +97,12 @@ public class Main {
         System.out.println(finishTime-startTime);
 
         //Задача 4.5
+        startTime=(int) System.nanoTime();
         StackList s1 = new StackList();
         s1.push("Test");
         s1.display(0);
-
+        finishTime=(int) System.nanoTime();
+        System.out.println(finishTime-startTime);
 
 
     }
